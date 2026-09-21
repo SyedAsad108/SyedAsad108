@@ -40,16 +40,72 @@ Currently expanding into **AI/ML**, while strengthening my foundations in Python
 
 ## 🚀 Featured Projects
 
+### 🧠 IncidentGraph — AI-Assisted Incident Investigation Platform
+
+An incident investigation and correlation platform designed to help engineers move from **CloudWatch alarms → correlated evidence → investigation reports**. It combines AWS observability, deterministic correlation, workload-aware context, and optional AI reasoning through Amazon Bedrock or Gemini.
+
+**Highlights**
+
+- 🚨 Detects infrastructure incidents from **CloudWatch Alarm state changes**
+- 🔗 Correlates metrics, logs, deployments, topology, and historical incidents
+- 🤖 AI-assisted investigation using **Amazon Bedrock / Gemini**
+- 🛠️ Tool-based investigation with metrics, logs, topology, runbooks, and incident history
+- 📚 Workload-aware architecture using configurable service and dependency definitions
+- 🧪 Includes a dedicated **IncidentGraph Lab** for failure injection and load testing
+- 💬 Uses a serverless real-time chat system as a reference workload
+- 🏗️ Infrastructure managed with **Terraform**
+
+<details>
+<summary><b>Architecture</b></summary>
+
+```text
+CloudWatch Alarm
+       │
+       ▼
+   EventBridge
+       │
+       ▼
+Incident Detector
+       │
+       ▼
+    DynamoDB
+       │
+       ▼
+Investigation Agent
+       │
+       ├── Metrics
+       ├── Logs
+       ├── Deployments
+       ├── Topology
+       ├── History
+       └── Runbooks
+       │
+       ▼
+Bedrock / Gemini
+       │
+       ▼
+Investigation Report
+       │
+       ▼
+   Next.js UI
+```
+
+</details>
+
+**Tech:** `AWS` `Lambda` `CloudWatch` `EventBridge` `DynamoDB` `Bedrock` `Gemini` `Terraform` `Next.js` `Node.js`
+
+---
+
 ### 🏭 AutoForge — Smart Manufacturing Data Intelligence Platform
 
-A cloud-native industrial telemetry platform built around an **event-driven data pipeline**. AutoForge simulates a factory environment, generates machine telemetry, processes it through a streaming and ETL pipeline, and exposes operational insights through a React dashboard.
+A cloud-native **Industry 4.0 data platform** that simulates a 24-machine manufacturing plant and processes industrial telemetry through an event-driven streaming and data-lake pipeline.
 
-| Metric | Value |
-| :--- | ---: |
-| 🏭 &nbsp;Machines simulated | **24** |
-| 📊 &nbsp;Sensor events processed | **243K+** |
-| ⚡ &nbsp;Architecture | **Event-driven** |
-| 🏗️ &nbsp;Infrastructure | **Terraform** |
+| Metric                      |            Value |
+| :-------------------------- | ---------------: |
+| 🏭  Machines simulated      |           **24** |
+| 📊  Sensor events processed |        **243K+** |
+| ⚡  Data pipeline            | **Event-driven** |
+| 🏗️  Infrastructure         |    **Terraform** |
 
 <details>
 <summary><b>Architecture</b></summary>
@@ -61,102 +117,144 @@ Industrial IoT Simulator
      FastAPI Backend
           │
           ▼
-      Amazon Kinesis
+     Amazon Kinesis
           │
           ▼
-          Lambda
+         Lambda
           │
-          ▼
-         S3 Raw
-          │
-          ▼
-        AWS Glue
-          │
-          ▼
-       S3 Curated
-          │
-          ▼
-          Athena
-          │
-          ▼
-      FastAPI APIs
-          │
-          ▼
-    React Dashboard
+     ┌────┴────┐
+     ▼         ▼
+  S3 Raw   Quarantine
+     │
+     ▼
+  AWS Glue
+     │
+     ▼
+ S3 Curated
+     │
+     ▼
+  Athena
+     │
+     ▼
+ FastAPI APIs
+     │
+     ▼
+ React Dashboard
 ```
 
 </details>
 
 **Highlights**
 
-- Asynchronous Python factory simulator generating telemetry from 24 industrial machines
-- Real-time telemetry ingestion with **Amazon Kinesis**
-- Lambda-based telemetry validation and anomaly detection
-- S3-based raw and curated data lake
-- ETL pipelines built with **AWS Glue**
-- Curated datasets queried through **Amazon Athena**
-- Analytics APIs built with **FastAPI**
-- React dashboard for machine health and operational insights
-- Infrastructure provisioned with **Terraform**
+* Asynchronous Python simulator generating stateful telemetry from **24 industrial machines**
+* Streaming ingestion through **Amazon Kinesis**
+* Lambda-based validation, anomaly tagging, and diagnostic enrichment
+* Raw and curated **S3 data lake** architecture
+* PySpark ETL pipelines with **AWS Glue**
+* Partitioned **Parquet** datasets optimized for Athena queries
+* Analytics APIs built with **FastAPI**
+* React-based factory dashboard / digital twin
+* Infrastructure provisioned using **Terraform**
+* Local development environment supported through **Docker Compose**
 
 **Tech:** `Python` `FastAPI` `Kinesis` `Lambda` `S3` `Glue` `Athena` `Terraform` `React` `Docker`
 
 ---
 
-### 🔐 SecureShare — Secure File Upload &amp; Sharing System
+### ☁️ VideoTube DevOps — Full-Stack Application & Cloud CI/CD
 
-A backend-focused file-sharing system designed around secure, direct object-storage transfers.
-
-**Key features**
-
-- Direct client-to-S3 uploads using **pre-signed URLs**
-- Backend-controlled authorization
-- Time-limited file access
-- Least-privilege **IAM** policies
-- REST APIs for user and file operations
-- Separation of application traffic from large file transfers
-
-**Tech:** `Node.js` `Express.js` `React` `MongoDB` `Amazon S3` `AWS IAM`
-
----
-
-### 💬 Serverless Real-Time Chat
-
-A real-time messaging system built around **WebSockets and AWS serverless infrastructure**.
+A full-stack video platform deployed on AWS with infrastructure-as-code and an automated **GitHub Actions CI/CD pipeline**.
 
 <details>
-<summary><b>Architecture</b></summary>
+<summary><b>Deployment Architecture</b></summary>
 
 ```text
-   React Client
+              GitHub
+                 │
+                 ▼
+        GitHub Actions CI/CD
+                 │
+        ┌────────┼────────┐
+        ▼        ▼        ▼
+     Backend  Frontend  Terraform
+        │        │
+        ▼        ▼
+       ECR       S3
+        │         │
+        ▼         ▼
+       ECS     CloudFront
         │
         ▼
-API Gateway WebSocket
+       ALB
         │
         ▼
-      Lambda
+     Express API
         │
         ▼
-     DynamoDB
+    MongoDB Atlas
 ```
 
 </details>
 
 **Highlights**
 
-- Real-time WebSocket communication and connection management
-- Real-time message delivery with persistence
-- JWT-based authentication
-- DynamoDB data modelling
-- Fully serverless backend architecture
+* React + Vite frontend with **Express.js** backend
+* Containerized backend deployed through **Amazon ECS**
+* Docker images built and pushed to **Amazon ECR**
+* Static frontend hosted on **Amazon S3 + CloudFront**
+* Automated CI/CD using **GitHub Actions**
+* AWS authentication through **OIDC**
+* Terraform-managed AWS infrastructure
+* Automated backend health checks and ECS deployment verification
+* Separate CI stages for backend tests, frontend builds, and Terraform validation
 
-**Tech:** `Node.js` `React` `AWS Lambda` `API Gateway` `WebSockets` `DynamoDB`
+**Tech:** `React` `Vite` `Node.js` `Express.js` `MongoDB` `Docker` `ECS` `ECR` `S3` `CloudFront` `Terraform` `GitHub Actions`
+
+---
+
+### 💬 Serverless Real-Time Chat
+
+A cloud-native real-time messaging application built around **WebSockets and AWS serverless services**.
+
+<details>
+<summary><b>Architecture</b></summary>
+
+```text
+        Next.js Client
+             │
+       ┌─────┴─────┐
+       ▼           ▼
+   HTTP API    WebSocket API
+       │           │
+       ▼           ▼
+    Lambda      Lambda
+       │           │
+       ▼           ▼
+   DynamoDB   API Gateway
+                   │
+                   ▼
+              Connected
+               Clients
+```
+
+</details>
+
+**Highlights**
+
+* Real-time communication using **API Gateway WebSockets**
+* Lambda handlers for connection, disconnection, authentication, and messaging
+* JWT-based authentication
+* WebSocket connection tracking in **DynamoDB**
+* Real-time message broadcasting through the API Gateway Management API
+* Fully serverless backend architecture
+
+**Tech:** `Next.js` `React` `TypeScript` `AWS Lambda` `API Gateway` `WebSockets` `DynamoDB` `JWT`
 
 ---
 
 ## 🛠️ Technical Stack
 
-**⚙️ Backend**
+### ⚙️ Backend
 
 <p>
   <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
@@ -166,7 +264,7 @@ API Gateway WebSocket
   <img src="https://img.shields.io/badge/WebSockets-010101?style=for-the-badge" alt="WebSockets" />
 </p>
 
-**☁️ Cloud &amp; DevOps**
+### ☁️ Cloud & DevOps
 
 <p>
   <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonwebservices&logoColor=FF9900" alt="AWS" />
@@ -175,9 +273,9 @@ API Gateway WebSocket
   <img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white" alt="GitHub Actions" />
 </p>
 
-`EC2` `S3` `Lambda` `API Gateway` `DynamoDB` `Kinesis` `Glue` `Athena` `SNS` `SQS` `IAM` `CloudWatch`
+`EC2` `ECS` `ECR` `S3` `CloudFront` `Lambda` `API Gateway` `DynamoDB` `Kinesis` `Glue` `Athena` `SNS` `SQS` `IAM` `CloudWatch` `EventBridge`
 
-**📊 Data &amp; Databases**
+### 📊 Data & Databases
 
 <p>
   <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB" />
@@ -186,7 +284,7 @@ API Gateway WebSocket
   <img src="https://img.shields.io/badge/AWS_Glue-232F3E?style=for-the-badge&logo=amazonwebservices&logoColor=FF9900" alt="AWS Glue" />
 </p>
 
-**💻 Languages**
+### 💻 Languages
 
 <p>
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
@@ -195,7 +293,7 @@ API Gateway WebSocket
   <img src="https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=c&logoColor=black" alt="C" />
 </p>
 
-**🎨 Frontend**
+### 🎨 Frontend
 
 <p>
   <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
@@ -229,7 +327,6 @@ API Gateway WebSocket
 | LLMs &amp; generative AI | Scalable applications | Observability |
 
 Currently working through the fundamentals of **neural networks and deep learning**, focusing on the mathematics, computational graphs, gradients, and backpropagation behind the abstractions rather than treating ML frameworks as black boxes.
-
 
 <!--
   OPTIONAL — WakaTime coding activity.

@@ -230,25 +230,6 @@ API Gateway WebSocket
 
 Currently working through the fundamentals of **neural networks and deep learning**, focusing on the mathematics, computational graphs, gradients, and backpropagation behind the abstractions rather than treating ML frameworks as black boxes.
 
----
-
-## 📈 GitHub Activity
-
-<p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=SyedAsad108&theme=tokyo-night&hide_border=true" width="95%" alt="GitHub Contribution Graph" />
-</p>
-
-<!--
-  OPTIONAL — self-hosted stats cards.
-  Uncomment only after a GitHub Actions workflow generates
-  profile/stats.svg and profile/top-langs.svg in this repository.
-  Until those files exist, these images render as broken links.
-
-<p align="center">
-  <img src="./profile/stats.svg" height="180" alt="GitHub Statistics" />
-  <img src="./profile/top-langs.svg" height="180" alt="Top Languages" />
-</p>
--->
 
 <!--
   OPTIONAL — WakaTime coding activity.

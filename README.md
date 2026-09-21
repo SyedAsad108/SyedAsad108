@@ -1,5 +1,4 @@
 ---
-
 ## 👨‍💻 About Me
 
 I'm a **B.Tech Information Technology student** interested in building and understanding the systems behind modern software.
@@ -8,17 +7,15 @@ My primary focus is **cloud and backend engineering**, with hands-on experience 
 
 I'm particularly interested in:
 
-* ☁️ **Cloud Engineering & AWS**
-* ⚙️ **Backend & Distributed Systems**
-* 📊 **Data Engineering**
-* 🏗️ **Infrastructure as Code & DevOps**
-* 🤖 **Artificial Intelligence & Machine Learning**
+- ☁️ **Cloud Engineering & AWS**
+- ⚙️ **Backend & Distributed Systems**
+- 📊 **Data Engineering**
+- 🏗️ **Infrastructure as Code & DevOps**
+- 🤖 **Artificial Intelligence & Machine Learning**
 
 I like understanding what happens beyond the application layer — **how services communicate, how data flows through a system, how infrastructure is provisioned, how systems scale, and how different architectural decisions affect performance and reliability.**
 
 Currently, I'm expanding into **AI engineering**, while strengthening my foundations in **Python, algorithms, backend development, system design, and deep learning**.
-
----
 
 ## ☁️ AWS Certifications
 
